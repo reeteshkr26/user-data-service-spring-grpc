@@ -1,0 +1,46 @@
+syntax = "proto3";
+package techno.user.data.api;
+
+option java_multiple_files = true;
+option java_outer_classname = "UserProto";
+option java_package = "com.techno.user.data.api.v1";
+
+service UserService{
+  rpc registerUser(UserRegistrationRequest) returns (UserRegistrationResponse);
+  rpc getUser(GetUserRequest) returns (GetUserResponse);
+}
+
+message UserRegistrationRequest {
+  string username = 1;
+  string password = 2;
+  string name = 3;
+  string address = 4;
+  string mobile = 5;
+  int32 age = 6;
+  string email = 7;
+  Gender gender = 8;
+}
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+  OTHER = 2;
+}
+
+message UserRegistrationResponse {
+  string id = 1;
+  string username = 2;
+  string name = 3;
+}
+
+message GetUserRequest {
+  string username = 1;
+}
+
+message GetUserResponse {
+  string id = 1;
+  string username = 2;
+  string name = 3;
+  string address = 4;
+  string mobile = 5;
+  Gender gender = 6;
+}

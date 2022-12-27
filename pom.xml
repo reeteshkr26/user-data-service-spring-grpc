@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>user-api-protos</module>
+        <module>persistence</module>
+        <module>service</module>
+        <module>grpc</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.tech.api</groupId>
+    <artifactId>user-data-service</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>user-data-service</name>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.boot.version>2.7.4</spring.boot.version>
+        <spring.boot.grpc.starter.version>4.9.1</spring.boot.grpc.starter.version>
+        <protobuf.version>3.20.1</protobuf.version>
+        <project.module.version>1.0-SNAPSHOT</project.module.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <type>pom</type>
+                <version>${spring.boot.version}</version>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.lognet</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${spring.boot.grpc.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tech.api</groupId>
+                <artifactId>user-api-protos</artifactId>
+                <version>${project.module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tech.api</groupId>
+                <artifactId>user-service</artifactId>
+                <version>${project.module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tech.api</groupId>
+                <artifactId>persistence</artifactId>
+                <version>${project.module.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
